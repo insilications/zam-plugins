@@ -1,0 +1,10 @@
+# This file contains additional pkgconfig build requirements that did
+# not get picked up automatically. One name per line, no whitespace.
+fftw3f
+gl
+lv2
+rubberband
+samplerate
+sndfile
+x11
+x11-xcb
