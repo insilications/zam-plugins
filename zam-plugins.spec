@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : zam-plugins
 Version  : 3.14
-Release  : 208
+Release  : 209
 URL      : file:///aot/build/clearlinux/packages/zam-plugins/zam-plugins-v3.14.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/zam-plugins/zam-plugins-v3.14.tar.gz
 Summary  : No detailed summary available
@@ -186,6 +186,16 @@ BuildRequires : zstd-staticdev
 zam-plugins [![travis](https://travis-ci.org/zamaudio/zam-plugins.svg?branch=master)](https://travis-ci.org/zamaudio/zam-plugins)
 ===========
 
+%package dev
+Summary: dev components for the zam-plugins package.
+Group: Development
+Provides: zam-plugins-devel = %{version}-%{release}
+Requires: zam-plugins = %{version}-%{release}
+
+%description dev
+dev components for the zam-plugins package.
+
+
 %prep
 %setup -q -n zam-plugins-clr
 cd %{_builddir}/zam-plugins-clr
@@ -196,7 +206,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640215983
+export SOURCE_DATE_EPOCH=1640216102
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -278,9 +288,111 @@ make  %{?_smp_mflags}   USE_SYSTEM_LIBS=1 SKIP_STRIPPING=true HAVE_ZITA_CONVOLVE
 
 
 %install
-export SOURCE_DATE_EPOCH=1640215983
+export SOURCE_DATE_EPOCH=1640216102
 rm -rf %{buildroot}
 %make_install USE_SYSTEM_LIBS=1 SKIP_STRIPPING=true HAVE_ZITA_CONVOLVER=true VERBOSE=true HAVE_DGL=false HAVE_CAIRO=false HAVE_OPENGL=false
 
 %files
 %defattr(-,root,root,-)
+
+%files dev
+%defattr(-,root,root,-)
+/usr/lib64/ladspa/ZaMaximX2-ladspa.so
+/usr/lib64/ladspa/ZaMultiComp-ladspa.so
+/usr/lib64/ladspa/ZaMultiCompX2-ladspa.so
+/usr/lib64/ladspa/ZamAutoSat-ladspa.so
+/usr/lib64/ladspa/ZamComp-ladspa.so
+/usr/lib64/ladspa/ZamCompX2-ladspa.so
+/usr/lib64/ladspa/ZamDelay-ladspa.so
+/usr/lib64/ladspa/ZamDynamicEQ-ladspa.so
+/usr/lib64/ladspa/ZamEQ2-ladspa.so
+/usr/lib64/ladspa/ZamGEQ31-ladspa.so
+/usr/lib64/ladspa/ZamGate-ladspa.so
+/usr/lib64/ladspa/ZamGateX2-ladspa.so
+/usr/lib64/ladspa/ZamGrains-ladspa.so
+/usr/lib64/ladspa/ZamPhono-ladspa.so
+/usr/lib64/ladspa/ZamTube-ladspa.so
+/usr/lib64/lv2/ZaMaximX2.lv2/ZaMaximX2_dsp.so
+/usr/lib64/lv2/ZaMaximX2.lv2/ZaMaximX2_dsp.ttl
+/usr/lib64/lv2/ZaMaximX2.lv2/manifest.ttl
+/usr/lib64/lv2/ZaMaximX2.lv2/presets.ttl
+/usr/lib64/lv2/ZaMultiComp.lv2/ZaMultiComp_dsp.so
+/usr/lib64/lv2/ZaMultiComp.lv2/ZaMultiComp_dsp.ttl
+/usr/lib64/lv2/ZaMultiComp.lv2/manifest.ttl
+/usr/lib64/lv2/ZaMultiComp.lv2/presets.ttl
+/usr/lib64/lv2/ZaMultiCompX2.lv2/ZaMultiCompX2_dsp.so
+/usr/lib64/lv2/ZaMultiCompX2.lv2/ZaMultiCompX2_dsp.ttl
+/usr/lib64/lv2/ZaMultiCompX2.lv2/manifest.ttl
+/usr/lib64/lv2/ZaMultiCompX2.lv2/presets.ttl
+/usr/lib64/lv2/ZamAutoSat.lv2/ZamAutoSat_dsp.so
+/usr/lib64/lv2/ZamAutoSat.lv2/ZamAutoSat_dsp.ttl
+/usr/lib64/lv2/ZamAutoSat.lv2/manifest.ttl
+/usr/lib64/lv2/ZamComp.lv2/ZamComp_dsp.so
+/usr/lib64/lv2/ZamComp.lv2/ZamComp_dsp.ttl
+/usr/lib64/lv2/ZamComp.lv2/manifest.ttl
+/usr/lib64/lv2/ZamComp.lv2/presets.ttl
+/usr/lib64/lv2/ZamCompX2.lv2/ZamCompX2_dsp.so
+/usr/lib64/lv2/ZamCompX2.lv2/ZamCompX2_dsp.ttl
+/usr/lib64/lv2/ZamCompX2.lv2/manifest.ttl
+/usr/lib64/lv2/ZamCompX2.lv2/presets.ttl
+/usr/lib64/lv2/ZamDelay.lv2/ZamDelay_dsp.so
+/usr/lib64/lv2/ZamDelay.lv2/ZamDelay_dsp.ttl
+/usr/lib64/lv2/ZamDelay.lv2/manifest.ttl
+/usr/lib64/lv2/ZamDelay.lv2/presets.ttl
+/usr/lib64/lv2/ZamDynamicEQ.lv2/ZamDynamicEQ_dsp.so
+/usr/lib64/lv2/ZamDynamicEQ.lv2/ZamDynamicEQ_dsp.ttl
+/usr/lib64/lv2/ZamDynamicEQ.lv2/manifest.ttl
+/usr/lib64/lv2/ZamDynamicEQ.lv2/presets.ttl
+/usr/lib64/lv2/ZamEQ2.lv2/ZamEQ2_dsp.so
+/usr/lib64/lv2/ZamEQ2.lv2/ZamEQ2_dsp.ttl
+/usr/lib64/lv2/ZamEQ2.lv2/manifest.ttl
+/usr/lib64/lv2/ZamEQ2.lv2/presets.ttl
+/usr/lib64/lv2/ZamGEQ31.lv2/ZamGEQ31_dsp.so
+/usr/lib64/lv2/ZamGEQ31.lv2/ZamGEQ31_dsp.ttl
+/usr/lib64/lv2/ZamGEQ31.lv2/manifest.ttl
+/usr/lib64/lv2/ZamGEQ31.lv2/presets.ttl
+/usr/lib64/lv2/ZamGate.lv2/ZamGate_dsp.so
+/usr/lib64/lv2/ZamGate.lv2/ZamGate_dsp.ttl
+/usr/lib64/lv2/ZamGate.lv2/manifest.ttl
+/usr/lib64/lv2/ZamGate.lv2/presets.ttl
+/usr/lib64/lv2/ZamGateX2.lv2/ZamGateX2_dsp.so
+/usr/lib64/lv2/ZamGateX2.lv2/ZamGateX2_dsp.ttl
+/usr/lib64/lv2/ZamGateX2.lv2/manifest.ttl
+/usr/lib64/lv2/ZamGateX2.lv2/presets.ttl
+/usr/lib64/lv2/ZamGrains.lv2/ZamGrains_dsp.so
+/usr/lib64/lv2/ZamGrains.lv2/ZamGrains_dsp.ttl
+/usr/lib64/lv2/ZamGrains.lv2/manifest.ttl
+/usr/lib64/lv2/ZamGrains.lv2/presets.ttl
+/usr/lib64/lv2/ZamHeadX2.lv2/ZamHeadX2_dsp.so
+/usr/lib64/lv2/ZamHeadX2.lv2/ZamHeadX2_dsp.ttl
+/usr/lib64/lv2/ZamHeadX2.lv2/manifest.ttl
+/usr/lib64/lv2/ZamHeadX2.lv2/presets.ttl
+/usr/lib64/lv2/ZamPhono.lv2/ZamPhono_dsp.so
+/usr/lib64/lv2/ZamPhono.lv2/ZamPhono_dsp.ttl
+/usr/lib64/lv2/ZamPhono.lv2/manifest.ttl
+/usr/lib64/lv2/ZamPhono.lv2/presets.ttl
+/usr/lib64/lv2/ZamTube.lv2/ZamTube_dsp.so
+/usr/lib64/lv2/ZamTube.lv2/ZamTube_dsp.ttl
+/usr/lib64/lv2/ZamTube.lv2/manifest.ttl
+/usr/lib64/lv2/ZamTube.lv2/presets.ttl
+/usr/lib64/lv2/ZamVerb.lv2/ZamVerb_dsp.so
+/usr/lib64/lv2/ZamVerb.lv2/ZamVerb_dsp.ttl
+/usr/lib64/lv2/ZamVerb.lv2/manifest.ttl
+/usr/lib64/lv2/ZamVerb.lv2/presets.ttl
+/usr/lib64/vst/ZaMaximX2-vst.so
+/usr/lib64/vst/ZaMultiComp-vst.so
+/usr/lib64/vst/ZaMultiCompX2-vst.so
+/usr/lib64/vst/ZamAutoSat-vst.so
+/usr/lib64/vst/ZamComp-vst.so
+/usr/lib64/vst/ZamCompX2-vst.so
+/usr/lib64/vst/ZamDelay-vst.so
+/usr/lib64/vst/ZamDynamicEQ-vst.so
+/usr/lib64/vst/ZamEQ2-vst.so
+/usr/lib64/vst/ZamGEQ31-vst.so
+/usr/lib64/vst/ZamGate-vst.so
+/usr/lib64/vst/ZamGateX2-vst.so
+/usr/lib64/vst/ZamGrains-vst.so
+/usr/lib64/vst/ZamHeadX2-vst.so
+/usr/lib64/vst/ZamPhono-vst.so
+/usr/lib64/vst/ZamTube-vst.so
+/usr/lib64/vst/ZamVerb-vst.so
